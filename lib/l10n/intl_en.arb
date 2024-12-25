@@ -1,5 +1,6 @@
 {
   "@@locale": "en",
-  "home_page": "Home page",
+  "homePage": "Home page",
+  "homeScreen": "Home screen",
   "test": "Test"
 }

@@ -51,10 +51,20 @@ class S {
   }
 
   /// `Home page`
-  String get home_page {
+  String get homePage {
     return Intl.message(
       'Home page',
-      name: 'home_page',
+      name: 'homePage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Home screen`
+  String get homeScreen {
+    return Intl.message(
+      'Home screen',
+      name: 'homeScreen',
       desc: '',
       args: [],
     );

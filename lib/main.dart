@@ -7,6 +7,7 @@ import 'package:path_finding/routes/app_router.dart';
 import 'generated/l10n.dart';
 import 'pages/home_page/blocs/home_bloc/home_bloc.dart';
 import 'repos/data_repo/data_repository.dart';
+import 'themes/app_themes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -39,7 +40,7 @@ class QssInspectorApp extends StatelessWidget {
         child: MaterialApp.router(
           title: 'QSS inspectors',
           routerConfig: router,
-          // locale: state.locale,
+          theme: AppThemes.lightTheme,
           supportedLocales: S.delegate.supportedLocales,
           localizationsDelegates: const [
             S.delegate,
