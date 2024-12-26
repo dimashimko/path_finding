@@ -13,4 +13,9 @@ class AppColors {
   static const Color blueOutline = Color(0xFF448AFF);
   static const Color grayFA = Color(0xFFFAFAFA);
   static const Color grayE7 = Color(0xFFE7E7E7);
+  static const Color cellInitial = Color(0xFF64FFDA);
+  static const Color cellEnd = Color(0xFF009688);
+  static const Color cellLocked = Color(0xFF000000);
+  static const Color cellShortestPath = Color(0xFF4CAF50);
+  static const Color cellEmpty = Color(0xFFFFFFFF);
 }

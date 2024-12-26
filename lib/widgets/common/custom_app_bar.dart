@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:path_finding/themes/app_colors.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -22,11 +21,6 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: title,
       iconTheme: IconThemeData(
         color: AppColors.white,
-      ),
-      systemOverlayStyle: SystemUiOverlayStyle(
-        statusBarColor: AppColors.darkBlue,
-        statusBarIconBrightness: Brightness.light, // For Android (dark icons)
-        statusBarBrightness: Brightness.dark, // For iOS (dark icons)
       ),
     );
   }

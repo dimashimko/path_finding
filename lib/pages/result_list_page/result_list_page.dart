@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:path_finding/models/task_models/task_result.dart';
 import 'package:path_finding/pages/result_list_page/widgets/result_list_card.dart';
 
 import '../../generated/l10n.dart';
+import '../../routes/app_router.dart';
 import '../../themes/app_colors.dart';
 import '../../utils/app_typography.dart';
 import '../../widgets/common/custom_app_bar.dart';
@@ -17,8 +19,14 @@ class ResultListPage extends StatelessWidget {
   final List<TaskResult> resultList;
 
   void _goToPreviewScreen({
+    required BuildContext context,
     required TaskResult taskResult,
-  }) {}
+  }) async {
+    await context.push(
+      PreviewRoute().location,
+      extra: taskResult,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,6 +50,7 @@ class ResultListPage extends StatelessWidget {
               taskResult: resultList[index],
               onTap: () {
                 _goToPreviewScreen(
+                  context: context,
                   taskResult: resultList[index],
                 );
               },

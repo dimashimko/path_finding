@@ -8,8 +8,9 @@ part 'task_result.g.dart';
 @freezed
 class TaskResult with _$TaskResult {
   const factory TaskResult({
-    required String id,
-    required Result result,
+    required final String id,
+    required final Result result,
+    @JsonKey(includeToJson: false) required final List<String> field,
   }) = _TaskResult;
 
   factory TaskResult.fromJson(Map<String, dynamic> json) =>

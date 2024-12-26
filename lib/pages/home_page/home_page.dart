@@ -127,7 +127,12 @@ class _HomePageState extends State<HomePage> {
                             ),
                             Task(
                               id: '88746d24-bf68-4dea-a6b6-4a8fefb47eb9',
-                              field: ["XXX.", "X..X", "X..X", ".XXX"],
+                              field: [
+                                "XXX.",
+                                "X..X",
+                                "X..X",
+                                ".XXX",
+                              ],
                               start: Cell(
                                 x: 0,
                                 y: 3,

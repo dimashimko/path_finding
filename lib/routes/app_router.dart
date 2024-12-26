@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import '../models/task_models/task.dart';
 import '../models/task_models/task_result.dart';
 import '../pages/home_page/home_page.dart';
+import '../pages/preview_page/preview_page.dart';
 import '../pages/process_page/process_page.dart';
 import '../pages/result_list_page/result_list_page.dart';
 
@@ -25,6 +26,11 @@ GoRouter getRouter() {
       routes: [
         TypedGoRoute<ResultListRoute>(
           path: ResultListRoute.path,
+          routes: [
+            TypedGoRoute<PreviewRoute>(
+              path: PreviewRoute.path,
+            ),
+          ],
         ),
       ],
     ),
@@ -64,6 +70,20 @@ class ResultListRoute extends GoRouteData {
   Widget build(BuildContext context, GoRouterState state) {
     return ResultListPage(
       resultList: state.extra as List<TaskResult>,
+    );
+  }
+}
+
+@immutable
+class PreviewRoute extends GoRouteData {
+  static const path = 'preview';
+
+  const PreviewRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return PreviewPage(
+      taskResult: state.extra as TaskResult,
     );
   }
 }

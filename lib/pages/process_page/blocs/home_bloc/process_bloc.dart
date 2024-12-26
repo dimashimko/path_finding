@@ -67,6 +67,11 @@ class ProcessBloc extends Bloc<ProcessEvent, ProcessState> {
         resultList: [
           TaskResult(
             id: '7d785c38-cd54-4a98-ab57-44e50ae646c1',
+            field: [
+              ".X.",
+              ".X.",
+              "...",
+            ],
             result: Result(
               steps: [
                 Cell(
@@ -87,6 +92,12 @@ class ProcessBloc extends Bloc<ProcessEvent, ProcessState> {
           ),
           TaskResult(
             id: '88746d24-bf68-4dea-a6b6-4a8fefb47eb9',
+            field: [
+              "XXX.",
+              "X..X",
+              "X..X",
+              ".XXX",
+            ],
             result: Result(
               steps: [
                 Cell(
