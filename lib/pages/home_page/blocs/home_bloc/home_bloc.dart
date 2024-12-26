@@ -37,6 +37,12 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     Emitter<HomeState> emit,
   ) async {
     try {
+      emit(
+        state.copyWith(
+          status: HomeStatus.loading,
+        ),
+      );
+
       final BaseResponse<List<Task>> tasksResponse =
           await dataRepository.getTasks(
         url: state.url,
