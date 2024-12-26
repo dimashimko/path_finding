@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../models/task_models/task.dart';
+import '../models/task_models/task_result.dart';
 import '../pages/home_page/home_page.dart';
 import '../pages/process_page/process_page.dart';
+import '../pages/result_list_page/result_list_page.dart';
 
 part 'app_router.g.dart';
 
@@ -20,6 +22,11 @@ GoRouter getRouter() {
   routes: [
     TypedGoRoute<ProcessPageRoute>(
       path: ProcessPageRoute.path,
+      routes: [
+        TypedGoRoute<ResultListRoute>(
+          path: ResultListRoute.path,
+        ),
+      ],
     ),
   ],
 )
@@ -42,8 +49,21 @@ class ProcessPageRoute extends GoRouteData {
   @override
   Widget build(BuildContext context, GoRouterState state) {
     return ProcessPage(
-      // taskList: [],
       taskList: state.extra as List<Task>,
+    );
+  }
+}
+
+@immutable
+class ResultListRoute extends GoRouteData {
+  static const path = 'result-list';
+
+  const ResultListRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return ResultListPage(
+      resultList: state.extra as List<TaskResult>,
     );
   }
 }

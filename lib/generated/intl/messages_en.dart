@@ -26,7 +26,10 @@ class MessageLookup extends MessageLookupByLibrary {
             "All calculations has finished, you can send your results to server"),
         "homePage": MessageLookupByLibrary.simpleMessage("Home page"),
         "homeScreen": MessageLookupByLibrary.simpleMessage("Home screen"),
+        "previewScreen": MessageLookupByLibrary.simpleMessage("Preview screen"),
         "processScreen": MessageLookupByLibrary.simpleMessage("Process screen"),
+        "resultListScreen":
+            MessageLookupByLibrary.simpleMessage("Result list screen"),
         "sendResultToServer":
             MessageLookupByLibrary.simpleMessage("Send results to server"),
         "setValidApi": MessageLookupByLibrary.simpleMessage(

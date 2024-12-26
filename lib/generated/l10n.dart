@@ -80,11 +80,31 @@ class S {
     );
   }
 
+  /// `Preview screen`
+  String get previewScreen {
+    return Intl.message(
+      'Preview screen',
+      name: 'previewScreen',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Process screen`
   String get processScreen {
     return Intl.message(
       'Process screen',
       name: 'processScreen',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Result list screen`
+  String get resultListScreen {
+    return Intl.message(
+      'Result list screen',
+      name: 'resultListScreen',
       desc: '',
       args: [],
     );

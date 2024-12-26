@@ -1,7 +1,7 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:path_finding/routes/app_router.dart';
 import 'package:path_finding/themes/app_colors.dart';
 import 'package:path_finding/utils/app_typography.dart';
 
@@ -10,6 +10,7 @@ import '../../models/task_models/task.dart';
 import '../../repos/data_repo/data_repository.dart';
 import '../../widgets/buttons/custom_outlined_button.dart';
 import '../../widgets/common/custom_app_bar.dart';
+import '../../widgets/common/custom_divider.dart';
 import '../../widgets/loaders/custom_loader.dart';
 import 'blocs/home_bloc/process_bloc.dart';
 
@@ -47,11 +48,12 @@ class _ProcessPageState extends State<ProcessPage> {
           ),
           body: BlocConsumer<ProcessBloc, ProcessState>(
             listenWhen: (p, c) => p.status != c.status,
-            listener: (context, state) {
+            listener: (context, state) async {
               if (state.status.isSuccess) {
-                log('*** Successful');
-
-                // context.pop(true);
+                await context.push(
+                  ResultListRoute().location,
+                  extra: state.resultList,
+                );
               }
             },
             builder: (context, state) {
@@ -79,9 +81,7 @@ class _ProcessPageState extends State<ProcessPage> {
                             ],
                           ),
                         ),
-                        Divider(
-                          color: AppColors.grayF0,
-                        ),
+                        CustomDivider(),
                         Padding(
                           padding: const EdgeInsets.all(16.0),
                           child: state.status.isFailure
