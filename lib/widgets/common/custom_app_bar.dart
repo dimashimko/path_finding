@@ -20,6 +20,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       backgroundColor: backgroundColor,
       title: title,
+      iconTheme: IconThemeData(
+        color: AppColors.white,
+      ),
       systemOverlayStyle: SystemUiOverlayStyle(
         statusBarColor: AppColors.darkBlue,
         statusBarIconBrightness: Brightness.light, // For Android (dark icons)

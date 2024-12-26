@@ -8,39 +8,22 @@ extension DioExceptionX on DioException {
     try {
       switch (type) {
         case DioExceptionType.badResponse:
-          if (response != null && response!.statusCode! < 500) {
+          if (response != null) {
             final BaseResponse baseResponse = BaseResponse.fromJson(
               response!.data,
               (json) => json,
             );
 
-            if (baseResponse.data is Map) {
-              final Map<String, dynamic> data = baseResponse.data;
-              final MapEntry<String, dynamic> entry = data.entries.first;
-
-              if (entry.value is List) {
-                return '${entry.value.first}';
-              } else {
-                return '${entry.value}';
-              }
+            if (baseResponse.error) {
+              return baseResponse.message;
+            } else {
+              return S.current.unknownError;
             }
-
-            if (baseResponse.data is List) {
-              final List<String> data = baseResponse.data;
-              return data.first;
-            }
-
-            if (baseResponse.data is String) {
-              final String data = baseResponse.data;
-              return data;
-            }
-
-            return baseResponse.message;
           } else {
             return '$message';
           }
         default:
-          return S.current.unknownError;
+          return type.name;
       }
     } catch (_) {
       return S.current.unknownError;

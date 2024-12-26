@@ -50,6 +50,16 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
+  /// `All calculations has finished, you can send your results to server`
+  String get allCalculationHasFinished {
+    return Intl.message(
+      'All calculations has finished, you can send your results to server',
+      name: 'allCalculationHasFinished',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Home page`
   String get homePage {
     return Intl.message(
@@ -65,6 +75,26 @@ class S {
     return Intl.message(
       'Home screen',
       name: 'homeScreen',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Process screen`
+  String get processScreen {
+    return Intl.message(
+      'Process screen',
+      name: 'processScreen',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Send results to server`
+  String get sendResultToServer {
+    return Intl.message(
+      'Send results to server',
+      name: 'sendResultToServer',
       desc: '',
       args: [],
     );
@@ -105,6 +135,16 @@ class S {
     return Intl.message(
       'Unknown error',
       name: 'unknownError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Wrong decision`
+  String get wrongDecision {
+    return Intl.message(
+      'Wrong decision',
+      name: 'wrongDecision',
       desc: '',
       args: [],
     );

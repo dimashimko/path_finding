@@ -40,6 +40,7 @@ class CustomOutlinedButton extends StatelessWidget {
 
             return const BorderSide(
               color: AppColors.blueOutline,
+              width: 2.0,
             );
           }),
         ),

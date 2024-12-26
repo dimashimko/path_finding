@@ -4,6 +4,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../../models/common_models/base_response.dart';
 import '../../../../../utils/extensions.dart';
+import '../../../../generated/l10n.dart';
 import '../../../../models/task_models/task.dart';
 import '../../../../repos/data_repo/data_repository.dart';
 
@@ -65,7 +66,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       emit(
         state.copyWith(
           status: HomeStatus.failure,
-          error: e.toString(),
+          error: S.current.unknownError,
         ),
       );
     }

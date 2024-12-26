@@ -22,13 +22,19 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "allCalculationHasFinished": MessageLookupByLibrary.simpleMessage(
+            "All calculations has finished, you can send your results to server"),
         "homePage": MessageLookupByLibrary.simpleMessage("Home page"),
         "homeScreen": MessageLookupByLibrary.simpleMessage("Home screen"),
+        "processScreen": MessageLookupByLibrary.simpleMessage("Process screen"),
+        "sendResultToServer":
+            MessageLookupByLibrary.simpleMessage("Send results to server"),
         "setValidApi": MessageLookupByLibrary.simpleMessage(
             "Set valid API base URL in order to continue"),
         "startCountingProcess":
             MessageLookupByLibrary.simpleMessage("Start counting process"),
         "test": MessageLookupByLibrary.simpleMessage("Test"),
-        "unknownError": MessageLookupByLibrary.simpleMessage("Unknown error")
+        "unknownError": MessageLookupByLibrary.simpleMessage("Unknown error"),
+        "wrongDecision": MessageLookupByLibrary.simpleMessage("Wrong decision")
       };
 }

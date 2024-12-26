@@ -1,9 +1,13 @@
 {
   "@@locale": "en",
+  "allCalculationHasFinished": "All calculations has finished, you can send your results to server",
   "homePage": "Home page",
   "homeScreen": "Home screen",
+  "processScreen": "Process screen",
+  "sendResultToServer": "Send results to server",
   "setValidApi": "Set valid API base URL in order to continue",
   "startCountingProcess": "Start counting process",
   "test": "Test",
-  "unknownError": "Unknown error"
+  "unknownError": "Unknown error",
+  "wrongDecision": "Wrong decision"
 }
