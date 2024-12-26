@@ -17,17 +17,29 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   HomeBloc({
     required this.dataRepository,
   }) : super(const HomeState()) {
-    on<_GetData>(_onGetData);
+    on<_GetTasks>(_onGetTasks);
+    on<_EditUrl>(_onEditUrl);
   }
 
-  void _onGetData(
-    _GetData event,
+  void _onEditUrl(
+    _EditUrl event,
+    Emitter<HomeState> emit,
+  ) {
+    emit(
+      HomeState(
+        url: event.newUrl,
+      ),
+    );
+  }
+
+  void _onGetTasks(
+    _GetTasks event,
     Emitter<HomeState> emit,
   ) async {
     try {
       final BaseResponse<List<Task>> tasksResponse =
           await dataRepository.getTasks(
-        url: event.refresh.toString(),
+        url: state.url,
       );
 
       emit(
@@ -41,6 +53,13 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         state.copyWith(
           status: HomeStatus.failure,
           error: e.text,
+        ),
+      );
+    } catch (e) {
+      emit(
+        state.copyWith(
+          status: HomeStatus.failure,
+          error: e.toString(),
         ),
       );
     }

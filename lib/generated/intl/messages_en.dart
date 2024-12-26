@@ -24,6 +24,11 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "homePage": MessageLookupByLibrary.simpleMessage("Home page"),
         "homeScreen": MessageLookupByLibrary.simpleMessage("Home screen"),
-        "test": MessageLookupByLibrary.simpleMessage("Test")
+        "setValidApi": MessageLookupByLibrary.simpleMessage(
+            "Set valid API base URL in order to continue"),
+        "startCountingProcess":
+            MessageLookupByLibrary.simpleMessage("Start counting process"),
+        "test": MessageLookupByLibrary.simpleMessage("Test"),
+        "unknownError": MessageLookupByLibrary.simpleMessage("Unknown error")
       };
 }

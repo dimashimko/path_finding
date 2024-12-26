@@ -19,6 +19,7 @@ class HomeState with _$HomeState {
   const factory HomeState({
     @Default(HomeStatus.initial) HomeStatus status,
     @Default([]) List<Task> taskList,
+    @Default('') String url,
     @Default('') String error,
   }) = _HomeState;
 }

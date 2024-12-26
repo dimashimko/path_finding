@@ -18,8 +18,7 @@ class DataRepository {
     return BaseResponse.fromJson(
       response.data,
       (json) {
-        json as Map<String, dynamic>;
-        return List.from(json['data'] as List)
+        return List.from(json as List)
             .map<Task>(
               (j) => Task.fromJson(j),
             )

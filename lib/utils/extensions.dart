@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 
+import '../generated/l10n.dart';
 import '../models/common_models/base_response.dart';
 
 extension DioExceptionX on DioException {
@@ -39,13 +40,10 @@ extension DioExceptionX on DioException {
             return '$message';
           }
         default:
-          return 'unknownError';
-        // return S.current.unknownError;
+          return S.current.unknownError;
       }
     } catch (_) {
-      return 'unknownError';
-
-      // return S.current.unknownError;
+      return S.current.unknownError;
     }
   }
 }

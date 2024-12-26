@@ -70,11 +70,41 @@ class S {
     );
   }
 
+  /// `Set valid API base URL in order to continue`
+  String get setValidApi {
+    return Intl.message(
+      'Set valid API base URL in order to continue',
+      name: 'setValidApi',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Start counting process`
+  String get startCountingProcess {
+    return Intl.message(
+      'Start counting process',
+      name: 'startCountingProcess',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Test`
   String get test {
     return Intl.message(
       'Test',
       name: 'test',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unknown error`
+  String get unknownError {
+    return Intl.message(
+      'Unknown error',
+      name: 'unknownError',
       desc: '',
       args: [],
     );

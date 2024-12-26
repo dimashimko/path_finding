@@ -2,5 +2,8 @@
   "@@locale": "en",
   "homePage": "Home page",
   "homeScreen": "Home screen",
-  "test": "Test"
+  "setValidApi": "Set valid API base URL in order to continue",
+  "startCountingProcess": "Start counting process",
+  "test": "Test",
+  "unknownError": "Unknown error"
 }
