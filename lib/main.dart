@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:go_router/go_router.dart';
 import 'package:path_finding/routes/app_router.dart';
@@ -42,18 +43,20 @@ class PathFinderApp extends StatelessWidget {
           create: (context) => DataRepository(),
         ),
       ],
-      child: MaterialApp.router(
-        title: 'Path finder app',
-        routerConfig: router,
-        theme: AppThemes.lightTheme,
-        supportedLocales: S.delegate.supportedLocales,
-        localizationsDelegates: const [
-          S.delegate,
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-        ],
-        debugShowCheckedModeBanner: false,
+      child: KeyboardDismissOnTap(
+        child: MaterialApp.router(
+          title: 'Path finder app',
+          routerConfig: router,
+          theme: AppThemes.lightTheme,
+          supportedLocales: S.delegate.supportedLocales,
+          localizationsDelegates: const [
+            S.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          debugShowCheckedModeBanner: false,
+        ),
       ),
     );
   }

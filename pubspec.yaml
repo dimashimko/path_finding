@@ -34,6 +34,9 @@ dependencies:
   bloc: ^8.1.2
   flutter_bloc: ^8.1.3
 
+  # Utils
+  flutter_keyboard_visibility: ^6.0.0
+
   #Other
   gap: ^3.0.1
 
