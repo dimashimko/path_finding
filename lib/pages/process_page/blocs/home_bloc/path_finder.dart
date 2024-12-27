@@ -25,10 +25,7 @@ class PathFinder {
   });
 
   List<Cell> calculate() {
-    _fillMap(
-      matrix.length,
-      matrix.first.length,
-    );
+    _fillMap();
 
     neighbors.add(start);
     map[start.y][start.x] = true;
@@ -64,10 +61,10 @@ class PathFinder {
       final newX = cell.x + direction[0];
       final newY = cell.y + direction[1];
 
-      if (newX >= 0 &&
-          newX < matrix.length &&
-          newY >= 0 &&
-          newY < matrix[newX].length) {
+      if (newY >= 0 &&
+          newY < matrix.length &&
+          newX >= 0 &&
+          newX < matrix[newY].length) {
         if (map[newY][newX] == false) {
           map[newY][newX] = true;
           List<Cell> newPath = [
@@ -87,7 +84,7 @@ class PathFinder {
     return neighbors;
   }
 
-  void _fillMap(int rows, int columns) {
+  void _fillMap() {
     map = matrix
         .map(
           (rows) => rows.map((cell) => cell.isLocked).toList(),
