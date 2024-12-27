@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
-import 'package:path_finding/models/task_models/cell.dart';
-import 'package:path_finding/models/task_models/task.dart';
 import 'package:path_finding/themes/app_colors.dart';
 import 'package:path_finding/utils/app_typography.dart';
 
@@ -88,67 +86,6 @@ class _HomePageState extends State<HomePage> {
                       ],
                     ),
                     Gap(16.0),
-                    ElevatedButton(
-                      onPressed: () {
-                        String testUrl =
-                            'https://flutter.webspark.dev/flutter/api';
-                        _controller.text = testUrl;
-                        context.read<HomeBloc>().add(
-                              HomeEvent.editUrl(
-                                newUrl: testUrl,
-                              ),
-                            );
-                      },
-                      child: Text(
-                        'Past target URL (Dev button)',
-                      ),
-                    ),
-                    Gap(16.0),
-                    ElevatedButton(
-                      onPressed: () {
-                        context.push(
-                          ProcessPageRoute().location,
-                          extra: [
-                            Task(
-                              id: '7d785c38-cd54-4a98-ab57-44e50ae646c1',
-                              field: [
-                                ".X.",
-                                ".X.",
-                                "...",
-                              ],
-                              start: Cell(
-                                x: 2,
-                                y: 1,
-                              ),
-                              end: Cell(
-                                x: 0,
-                                y: 2,
-                              ),
-                            ),
-                            Task(
-                              id: '88746d24-bf68-4dea-a6b6-4a8fefb47eb9',
-                              field: [
-                                "XXX.",
-                                "X..X",
-                                "X..X",
-                                ".XXX",
-                              ],
-                              start: Cell(
-                                x: 0,
-                                y: 3,
-                              ),
-                              end: Cell(
-                                x: 3,
-                                y: 0,
-                              ),
-                            ),
-                          ],
-                        );
-                      },
-                      child: Text(
-                        'Push custom tasks (Dev button)',
-                      ),
-                    ),
                     if (state.status.isFailure)
                       Text(
                         state.error,
