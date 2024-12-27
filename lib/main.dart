@@ -19,13 +19,18 @@ void main() async {
       statusBarBrightness: Brightness.dark,
     ),
   );
-  runApp(
-    const QssInspectorApp(),
-  );
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]).then((_) {
+    runApp(
+      PathFinderApp(),
+    );
+  });
 }
 
-class QssInspectorApp extends StatelessWidget {
-  const QssInspectorApp({super.key});
+class PathFinderApp extends StatelessWidget {
+  const PathFinderApp({super.key});
 
   static final GoRouter router = getRouter();
 
@@ -38,7 +43,7 @@ class QssInspectorApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp.router(
-        title: 'QSS inspectors',
+        title: 'Path finder app',
         routerConfig: router,
         theme: AppThemes.lightTheme,
         supportedLocales: S.delegate.supportedLocales,
