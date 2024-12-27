@@ -6,6 +6,21 @@ import '../generated/l10n.dart';
 import '../models/common_models/base_response.dart';
 import '../models/task_models/cell.dart';
 
+extension PrettyPrintBoolArray on List<List<bool>> {
+  String prettyPrint() {
+    return map((row) => row.map((value) => value ? 'T' : 'F').join(' '))
+        .join('\n');
+  }
+}
+
+extension PrettyPrintCellArray on List<List<Cell>> {
+  String prettyPrint() {
+    return map(
+            (row) => row.map((value) => value.isLocked ? 'T' : 'F').join(' '))
+        .join('\n');
+  }
+}
+
 extension ListCellX on List<Cell> {
   Color getColor(int row, int col, bool isLocked) {
     if (isLocked) return AppColors.cellLocked;
