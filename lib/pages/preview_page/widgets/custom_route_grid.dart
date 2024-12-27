@@ -45,7 +45,8 @@ class CustomRouteGrid extends StatelessWidget {
                     ),
                     child: Center(
                       child: Text(
-                        '($row, $col)',
+                        // '($row, $col)',
+                        '($col, $row)',
                         style: TextStyle(
                           color: letters[col].isLocked
                               ? AppColors.white

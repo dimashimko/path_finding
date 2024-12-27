@@ -10,10 +10,10 @@ extension ListCellX on List<Cell> {
   Color getColor(int row, int col, bool isLocked) {
     if (isLocked) return AppColors.cellLocked;
     if (isEmpty) return AppColors.cellEmpty;
-    if (first.x == row && first.y == col) return AppColors.cellInitial;
-    if (last.x == row && last.y == col) return AppColors.cellEnd;
+    if (first.x == col && first.y == row) return AppColors.cellInitial;
+    if (last.x == col && last.y == row) return AppColors.cellEnd;
     for (int i = 1; i < length - 1; i++) {
-      if (this[i].x == row && this[i].y == col) {
+      if (this[i].x == col && this[i].y == row) {
         return AppColors.cellShortestPath;
       }
     }
