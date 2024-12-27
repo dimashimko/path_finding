@@ -33,6 +33,7 @@ class PathFinder {
     while (true) {
       newNeighbors = _getNewNeighbors(neighbors);
       if (newNeighbors.isEmpty) break;
+      if (map[end.y][end.x]) break;
       neighbors = [...newNeighbors];
       newNeighbors = [];
     }
