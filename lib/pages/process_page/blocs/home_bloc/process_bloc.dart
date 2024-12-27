@@ -4,6 +4,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:path_finding/models/task_models/cell.dart';
 import 'package:path_finding/models/task_models/result.dart';
 import 'package:path_finding/models/task_models/task_result.dart';
+import 'package:path_finding/pages/process_page/blocs/home_bloc/path_finder.dart';
 
 import '../../../../../models/common_models/base_response.dart';
 import '../../../../../utils/extensions.dart';
@@ -36,10 +37,6 @@ class ProcessBloc extends Bloc<ProcessEvent, ProcessState> {
     _Calculation event,
     Emitter<ProcessState> emit,
   ) async {
-    const totalDuration = 1;
-    const steps = 100;
-    const stepDuration = totalDuration / steps;
-
     emit(
       state.copyWith(
         status: ProcessStatus.calculating,
@@ -47,15 +44,16 @@ class ProcessBloc extends Bloc<ProcessEvent, ProcessState> {
       ),
     );
 
-    for (int i = 0; i <= steps; i++) {
-      await Future.delayed(
-        Duration(
-          milliseconds: (stepDuration * 1000).toInt(),
+    List<TaskResult> resultList = [];
+    for (Task task in state.taskList) {
+      resultList.add(
+        _calculatingTask(
+          task,
         ),
       );
       emit(
         state.copyWith(
-          progress: i,
+          progress: ((resultList.length / state.taskList.length) * 100).toInt(),
         ),
       );
     }
@@ -64,65 +62,54 @@ class ProcessBloc extends Bloc<ProcessEvent, ProcessState> {
       state.copyWith(
         status: ProcessStatus.ready,
         progress: 100,
-        resultList: [
-          TaskResult(
-            id: '7d785c38-cd54-4a98-ab57-44e50ae646c1',
-            field: [
-              ".X.",
-              ".X.",
-              "...",
-            ],
-            result: Result(
-              steps: [
-                Cell(
-                  x: 2,
-                  y: 1,
-                ),
-                Cell(
-                  x: 1,
-                  y: 2,
-                ),
-                Cell(
-                  x: 0,
-                  y: 2,
-                ),
-              ],
-              path: '(2,1)->(1,2)->(0,2)',
-            ),
-          ),
-          TaskResult(
-            id: '88746d24-bf68-4dea-a6b6-4a8fefb47eb9',
-            field: [
-              "XXX.",
-              "X..X",
-              "X..X",
-              ".XXX",
-            ],
-            result: Result(
-              steps: [
-                Cell(
-                  x: 0,
-                  y: 3,
-                ),
-                Cell(
-                  x: 1,
-                  y: 2,
-                ),
-                Cell(
-                  x: 2,
-                  y: 1,
-                ),
-                Cell(
-                  x: 3,
-                  y: 0,
-                ),
-              ],
-              path: '(0,3)->(3,0)',
-            ),
-          ),
-        ],
+        resultList: resultList,
       ),
     );
+  }
+
+  TaskResult _calculatingTask(Task task) {
+    List<List<Cell>> matrix = _convertToMatrix(
+      task.field,
+    );
+    PathFinder pathFinder = PathFinder(
+      matrix: matrix,
+      start: task.start,
+      end: task.end,
+    );
+
+    return TaskResult(
+      id: task.id,
+      field: task.field,
+      result: Result(
+        steps: pathFinder.calculate(),
+        path: '${task.start.toText}->${task.end.toText}',
+      ),
+    );
+  }
+
+  List<List<Cell>> _convertToMatrix(List<String> field) {
+    final List<List<Cell>> matrix = [];
+
+    for (int y = 0; y < field.length; y++) {
+      final List<Cell> row = [];
+      final String line = field[y];
+
+      for (int x = 0; x < line.length; x++) {
+        final String char = line[x];
+
+        row.add(
+          Cell(
+            x: x,
+            y: y,
+            isLocked: char.isLocked,
+          ),
+        );
+      }
+
+      matrix.add(row);
+    }
+
+    return matrix;
   }
 
   void _onSendResults(
