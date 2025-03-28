@@ -1,0 +1,2 @@
+/Users/dimashimko/AndroidStudioProjects/www other_company/webspark/path_finding/android/app/.cxx/Debug/6h2g542y/armeabi-v7a/CMakeFiles/edit_cache.dir
+/Users/dimashimko/AndroidStudioProjects/www other_company/webspark/path_finding/android/app/.cxx/Debug/6h2g542y/armeabi-v7a/CMakeFiles/rebuild_cache.dir
